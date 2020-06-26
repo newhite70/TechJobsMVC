@@ -23,22 +23,38 @@ namespace TechJobsMVC.Controllers
         
         public IActionResult Results(string searchType, string searchTerm)
         {
-            
+            ViewBag.searchTerm = searchTerm;
+
             List<Job> jobs;
+            if (String.IsNullOrEmpty(searchType))
+            {
+                ViewBag.searchType = "All";
+                //jobs = JobData.FindAll();
+                ViewBag.title = "All Jobs";
+            }
+            else
+            {
+                ViewBag.searchType = searchType;
+            }
             if (String.IsNullOrEmpty(searchTerm))
             {
                 jobs = JobData.FindAll();
+                //jobs = JobData.FindAll();
                 ViewBag.title = "All Jobs";
             }
             else
             {
                 jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
-                ViewBag.title = "Jobs with " + searchType + ": " + searchTerm;
             }
+                
+            
+                
+            ViewBag.title = "Jobs with " + searchType + ": " + searchTerm;
+            
             ViewBag.jobs = jobs;
-            //ViewBag.columns = ListController.ColumnChoices;
+            ViewBag.columns = ListController.ColumnChoices;
 
-            return View(); 
+            return View("Index"); 
 
         }
 
