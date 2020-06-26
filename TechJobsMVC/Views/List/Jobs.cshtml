@@ -7,6 +7,15 @@
     }
     @if (ViewBag.jobs != null)
     {
+        @if (ViewBag.jobs.Count == 1)
+        {
+            <h1>1 Result</h1>
+        }
+        else 
+        { 
+            <h1> @ViewBag.jobs.Count Results</h1> 
+        };
+
         <table class="job-listing">
             @foreach (var job in ViewBag.jobs)
             {
