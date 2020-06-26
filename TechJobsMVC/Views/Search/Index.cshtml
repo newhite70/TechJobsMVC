@@ -42,10 +42,7 @@
         <table class="job-listing">
             @foreach (var job in ViewBag.jobs)
             {
-                if (job == null)
-                {
-                    continue;
-                }
+
                 <tr>
                     <td>
                         ID: @job.Id<br>
