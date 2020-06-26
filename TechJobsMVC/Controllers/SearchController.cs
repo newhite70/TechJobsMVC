@@ -24,18 +24,8 @@ namespace TechJobsMVC.Controllers
         public IActionResult Results(string searchType, string searchTerm)
         {
             ViewBag.searchTerm = searchTerm;
-
             List<Job> jobs;
-            if (String.IsNullOrEmpty(searchType))
-            {
-                ViewBag.searchType = "All";
-                //jobs = JobData.FindAll();
-                ViewBag.title = "All Jobs";
-            }
-            else
-            {
-                ViewBag.searchType = searchType;
-            }
+
             if (String.IsNullOrEmpty(searchTerm))
             {
                 jobs = JobData.FindAll();
